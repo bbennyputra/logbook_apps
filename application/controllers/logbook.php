@@ -1522,21 +1522,30 @@
 		}
 
 		function edit_pembukaan_rekening_individu(){
-			$id['kode_pembukaan_rekening_individu']=$this->input->post('kode_pembukaan_rekening_individu');
-			$data=array(
-				'nama_nasabah'=>$this->input->post('nama_nasabah'),
-				'no_ktp'=>$this->input->post('no_ktp'),
-				'email'=>$this->input->post('email'),
-				'nama_sales'=>$this->input->post('nama_sales'),
-				'checklist_ktp'=>$this->input->post('checklist_ktp'),
-				'checklist_npwp'=>$this->input->post('checklist_npwp'),
-				'checklist_form_pembukaan_rekening'=>$this->input->post('checklist_form_pembukaan_rekening'),
-			);
+			$stat=$this->session->userdata('level_id');
 
+			$id['kode_pembukaan_rekening_individu']=$this->input->post('kode_pembukaan_rekening_individu');
+			
+			if ($stat==6) {
+				$data=array(
+					'klasifikasi_resiko'=>$this->input->post('klasifikasi_resiko'),
+				);	
+			}
+			else {
+				$data=array(
+					'nama_nasabah'=>$this->input->post('nama_nasabah'),
+					'no_ktp'=>$this->input->post('no_ktp'),
+					'email'=>$this->input->post('email'),
+					'nama_sales'=>$this->input->post('nama_sales'),
+					'checklist_ktp'=>$this->input->post('checklist_ktp'),
+					'checklist_npwp'=>$this->input->post('checklist_npwp'),
+					'checklist_form_pembukaan_rekening'=>$this->input->post('checklist_form_pembukaan_rekening'),
+					'klasifikasi_resiko'=>$this->input->post('klasifikasi_resiko'),
+				);
+			}
 			$this->m_logbook->updateData('tbl_pembukaan_rekening_individu', $data, $id);
 			redirect('logbook/pembukaan_rekening_individu');
 		}
-
 
 		function hapus_pembukaan_rekening_individu(){
 			$id['kode_pembukaan_rekening_individu']=$this->input->post('kode_pembukaan_rekening_individu');
@@ -1681,6 +1690,7 @@
 				'approval_senior_settlement'=>'5',
 				'approval_head_operation'=>'2',
 				'status'=>'2',
+				'klasifikasi_resiko'=>$this->input->post('klasifikasi_resiko'),
 			);
 
 			$this->m_logbook->insertData('tbl_pembukaan_rekening_institusi', $data);
@@ -1689,20 +1699,29 @@
 
 		function edit_pembukaan_rekening_institusi(){
 			$id['kode_pembukaan_rekening_institusi']=$this->input->post('kode_pembukaan_rekening_institusi');
-			$data=array(
-				'nama_nasabah'=>$this->input->post('nama_nasabah'),
-				'no_npwp'=>$this->input->post('no_npwp'),
-				'email'=>$this->input->post('email'),
-				'nama_sales'=>$this->input->post('nama_sales'),
-				'checklist_form_pembukaan_rekening'=>$this->input->post('checklist_form_pembukaan_rekening'),
-				'checklist_npwp'=>$this->input->post('checklist_npwp'),
-				'checklist_siup'=>$this->input->post('checklist_siup'),
-				'checklist_adart'=>$this->input->post('checklist_adart'),
-				'checklist_skd'=>$this->input->post('checklist_skd'),
-				'checklist_specimen'=>$this->input->post('checklist_specimen'),
-				'checklist_ktp_pengurus'=>$this->input->post('checklist_ktp_pengurus'),
-				'checklist_rekening_redemption'=>$this->input->post('checklist_rekening_redemption'),
-			);
+			
+			if ($stat==6) {
+				$data=array(
+					'klasifikasi_resiko'=>$this->input->post('klasifikasi_resiko'),
+				);	
+			}
+			else {
+				$data=array(
+					'nama_nasabah'=>$this->input->post('nama_nasabah'),
+					'no_npwp'=>$this->input->post('no_npwp'),
+					'email'=>$this->input->post('email'),
+					'nama_sales'=>$this->input->post('nama_sales'),
+					'checklist_form_pembukaan_rekening'=>$this->input->post('checklist_form_pembukaan_rekening'),
+					'checklist_npwp'=>$this->input->post('checklist_npwp'),
+					'checklist_siup'=>$this->input->post('checklist_siup'),
+					'checklist_adart'=>$this->input->post('checklist_adart'),
+					'checklist_skd'=>$this->input->post('checklist_skd'),
+					'checklist_specimen'=>$this->input->post('checklist_specimen'),
+					'checklist_ktp_pengurus'=>$this->input->post('checklist_ktp_pengurus'),
+					'checklist_rekening_redemption'=>$this->input->post('checklist_rekening_redemption'),
+					'klasifikasi_resiko'=>$this->input->post('klasifikasi_resiko'),
+				);
+			}
 
 			$this->m_logbook->updateData('tbl_pembukaan_rekening_institusi', $data, $id);
 			redirect('logbook/pembukaan_rekening_institusi');

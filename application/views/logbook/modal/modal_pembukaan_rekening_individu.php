@@ -1,3 +1,4 @@
+<?php  $stat=$this->session->userdata('level_id'); ?>
 <style type="text/css">
     .table-padding{
         padding-left: 10px;
@@ -111,6 +112,13 @@
 </div>
 
 <?php
+    if ($stat==6) {
+        $disabled = 'disabled="disabled"';
+    }
+    else {
+        $disabled = '';
+    }
+
     if (isset($data_pembukaan_rekening_individu)) {
         foreach ($data_pembukaan_rekening_individu as $data) {
 ?>
@@ -119,7 +127,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Edit Data Complain</h4>
+                <h4 class="modal-title">Edit Data Pembukaan Rekening Individu</h4>
             </div>
             <form class="form-horizontal" action="<?php echo site_url('logbook/edit_pembukaan_rekening_individu')?>" method="post">
                 <div class="modal-body">
@@ -139,25 +147,25 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Nama Nasabah</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="nama_nasabah" id="nama_nasabah" value="<?php echo $data->nama_nasabah?>" autocomplete="off">
+                            <input type="text" class="form-control" name="nama_nasabah" id="nama_nasabah" value="<?php echo $data->nama_nasabah?>" autocomplete="off" <?php echo $disabled ?>>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">No. KTP</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" name="no_ktp" id="no_ktp" value="<?php echo $data->no_ktp?>" autocomplete="off">
+                            <input type="text" class="form-control" name="no_ktp" id="no_ktp" value="<?php echo $data->no_ktp?>" autocomplete="off" <?php echo $disabled ?>>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Email</label>
                         <div class="col-sm-7">
-                            <input class="form-control" name="email" id="email" value="<?php echo $data->email?>">
+                            <input class="form-control" name="email" id="email" value="<?php echo $data->email?>" <?php echo $disabled ?>>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Nama Sales</label>
                         <div class="col-sm-7">
-                            <select class="form-control" style="width: 100%;" name="nama_sales" id="nama_sales">
+                            <select class="form-control" style="width: 100%;" name="nama_sales" id="nama_sales" <?php echo $disabled ?>>
                                 <?php
                                     foreach ($ref_sales as $data_sales){
                                         $selected=($data->nama_sales == $data_sales->nama_sales)?"selected":"";
@@ -206,7 +214,6 @@
                     <div class="form-group ">
                         <label class="col-sm-3 control-label">Checklist</label>
                         <?php 
-
                             if ($data->checklist_form_pembukaan_rekening==1) {
                         ?>  
                         <div class="col-sm-3 checkbox">
@@ -282,7 +289,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Hapus Data Pembukaan Rekening</h4>
+                <h4 class="modal-title">Hapus Data Pembukaan Rekening Individu</h4>
             </div>
             <form class="form-horizontal" action="<?php echo site_url('logbook/hapus_pembukaan_rekening_individu')?>" method="post">
                 <div class="modal-body">

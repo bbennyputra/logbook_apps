@@ -203,7 +203,8 @@
         <td><?php echo $data->nama_fund;?></td>
         <td><?php 
           if ($data->up_redemption!='') {
-            echo number_format($data->up_redemption,0,',','.') .' Unit';  
+            // echo number_format($data->up_redemption,0,',','.') .' Unit';  
+            echo $data->up_redemption;
           }
           else {
             echo "-";

@@ -231,27 +231,20 @@
                           }
                         ?></td>
                         <?php 
-                          if ($stat==8 || $stat==6) {
+                          if ($stat==8 || ($stat==6)) {
                         ?>
                         <td>
                           <center>
                             <div class="btn-group" role="group">
-                              <!-- <a href="<?php echo site_url('pelaporan/detail_complain_list?no_pelaporan='.$data->no_pelaporan)?>"><button type="button" class="btn btn-default btn-sm">
-                                <span class="glyphicon glyphicon-list"></span>
-                              </button></a> -->
                               <button type="button" class="btn btn-default btn-sm" href="#edit_pembukaan_rekening_individu<?php echo $data->kode_pembukaan_rekening_individu ?>" data-toggle="modal">
                                 <span class="glyphicon glyphicon-pencil"></span>
-                              </button>
-                              <!-- <button type="button" class="btn btn-default btn-sm" href="#hapus_pembukaan_rekening_individu<?php echo $data->kode_pembukaan_rekening_individu ?>" data-toggle="modal">
-                                <span class="glyphicon glyphicon-trash"></span>
-                              </button> -->
-                            </div>
+                              </button></div>
                           </center>
                         </td>
                         <?php }
-                          else {
+                        else {
 
-                          }
+                        }
                         ?>
                       </tr>
                       <?php
